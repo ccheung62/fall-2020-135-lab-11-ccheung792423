@@ -5,6 +5,7 @@
 
 int main() {
   //Task A
+  std::cout << "\nTask A:" << std::endl;
     Profile p1("marco", "Marco");    
     std::cout << p1.getUsername() << std::endl; // marco
     std::cout << p1.getFullName() << std::endl; // Marco (@marco)
@@ -16,8 +17,10 @@ int main() {
     Profile p2("tarma1", "Tarma Roving");    
     std::cout << p2.getUsername() << std::endl; // tarma1
     std::cout << p2.getFullName() << std::endl; // Tarma Roving (@tarma1)
+  std::cout << "-----------------------------------------------" << std::endl;
     
    //Task B
+  std::cout << "Task B:" << std::endl;
     Network nw;
     std::cout << nw.addUser("mario", "Mario") << std::endl;     // true (1)
     std::cout << nw.addUser("luigi", "Luigi") << std::endl;     // true (1)
@@ -30,10 +33,12 @@ int main() {
     std::cout << nw.addUser("mario" + std::to_string(i), 
 			    "Mario" + std::to_string(i)) << std::endl;   // true (1)
     }
-  std::cout << nw.addUser("yoshi", "Yoshi") << std::endl;     // false (0)
+    std::cout << nw.addUser("yoshi", "Yoshi") << std::endl;     // false (0)
+  std::cout << "-----------------------------------------------" << std::endl;
 
   //Task C
-  nw.resetIt();
+  std::cout << "Task C:" << std::endl;
+  nw.resetIt(); 
     // add three users
     nw.addUser("mario", "Mario");
     nw.addUser("luigi", "Luigi");
@@ -61,4 +66,39 @@ int main() {
     nw.follow("mario2", "luigi");
 
     nw.printDot();
+  std::cout << "-----------------------------------------------" << std::endl;
+
+  //Task D
+  std::cout << "Task D" << std::endl;
+  nw.resetIt();
+  // add three users
+  nw.addUser("mario", "Mario");
+  nw.addUser("luigi", "Luigi");
+  nw.addUser("yoshi", "Yoshi");
+   
+  nw.follow("mario", "luigi");
+  nw.follow("luigi", "mario");
+  nw.follow("luigi", "yoshi");
+  nw.follow("yoshi", "mario");
+
+  // write some posts
+  nw.writePost("mario", "It's a-me, Mario!");
+  nw.writePost("luigi", "Hey hey!");
+  nw.writePost("mario", "Hi Luigi!");
+  nw.writePost("yoshi", "Test 1");
+  nw.writePost("yoshi", "Test 2");
+  nw.writePost("luigi", "I just hope this crazy plan of yours works!");
+  nw.writePost("mario", "My crazy plans always work!");
+  nw.writePost("yoshi", "Test 3");
+  nw.writePost("yoshi", "Test 4");
+  nw.writePost("yoshi", "Test 5");
+
+  std::cout << std::endl;
+  std::cout << "======= Mario's timeline =======" << std::endl;
+  nw.printTimeline("mario");
+  std::cout << std::endl;
+
+  std::cout << "======= Yoshi's timeline =======" << std::endl;
+  nw.printTimeline("yoshi");
+  std::cout << std::endl;
 }
